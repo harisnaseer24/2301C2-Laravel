@@ -24,6 +24,29 @@
         </header>
         <main>
             <div class="container">
+                @if($deleted= Session::get('success'))
+                <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    role="alert"
+                >
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"
+                    ></button>
+                    <strong>{{ $deleted }}</strong> Record deleted successfully.
+                </div>
+                
+                <script>
+                    var alertList = document.querySelectorAll(".alert");
+                    alertList.forEach(function (alert) {
+                        new bootstrap.Alert(alert);
+                    });
+                </script>
+                
+                @endif
+                
                 <h1 class="text-primary fw-bolder display-3 text-center">Our Registered Students</h1>
                 <div class="row">
                 @foreach($students as $student)
@@ -36,8 +59,8 @@
                         <p class="card-text">{{ $student['email']}}</p>
                         <p class="card-text">{{ $student['contact']}}</p>
                         <p class="card-text">{{ $student['city']}}</p>
-                        <a href="/edit/{{ $student->id}}" class="btn btn-primary">Edit</a>
-                        <a href="/delete/{{ $student['id']}}" class="btn btn-danger">Delete</a>
+                        <a href="/editstudent/{{ $student->id}}" class="btn btn-primary">Edit</a>
+                        <a href="/deletestudent/{{ $student['id']}}" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                     </div>

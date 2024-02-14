@@ -47,7 +47,8 @@ use App\Http\Controllers\StudentController;
 
 Route::get('/register',[StudentController::class, 'register']);
 Route::get('/students',[StudentController::class, 'getStudents']);
-Route::post('/create',[StudentController::class, 'create'])
+Route::post('/create',[StudentController::class, 'create']);
+Route::get('/deletestudent/{id}',[StudentController::class, 'deleteStudent'])
 
 
 ?>

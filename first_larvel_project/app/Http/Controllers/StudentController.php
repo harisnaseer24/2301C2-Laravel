@@ -39,4 +39,9 @@ return back()->withSuccess('Success');
         // dd($test);
         return view("students",['students'=>StudentModel::get()]);
     }
+    public function deleteStudent($id){
+      StudentModel::destroy($id);
+
+      return back()->withSuccess('Deleted');
+    }
 }
